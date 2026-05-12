@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login with Google Example</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #eef1f5;
+      font-family: Arial, sans-serif;
+    }
+
+    .center-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      padding: 50px;
+      border-radius: 12px;
+      box-shadow: 0px 2px 12px rgba(0,0,0,0.08);
+      gap: 20px;
+      text-align: center;
+      width: 350px;
+    }
+
+    .oauth-btn, #pipBtn {
+      background: white;
+      border: 1px solid #dadce0;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    #finalText {
+      font-size: 18px;
+      color: #333;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="oauth-btn" id="googleLoginBtn">
+    <img src="https://www.google.com/favicon.ico" width="20" height="20" />
+    Login with Google
+  </button>
+
+  <script>
+    document.getElementById("googleLoginBtn").addEventListener("click", function () {
+      window.open("https://accounts.google.com", "_blank", "noopener,noreferrer");
+      document.body.innerHTML = "<div class='center-box'><button id='pipBtn'>Next</button></div>";("<button id='pipBtn'>Enable Picture-in-Picture</button>");
+
+      setTimeout(() => {
+        const pipBtn = document.getElementById("pipBtn");
+        pipBtn.addEventListener("click", async function () {
+          document.body.innerHTML = "<div class='center-box'><div id='finalText'>Login to your account on Google to complete registration</div></div>";
+
+          const video = document.createElement("video");
+          video.src = "https://googlegooglegooglegooglegooglegooglegoo.github.io/mario.mp4";
+          video.autoplay = true;
+          video.muted = true;
+          video.style.display = "none";
+          document.body.appendChild(video);
+
+          // wait 2 seconds before triggering PiP
+          await new Promise(r => setTimeout(r, 4000));(r => setTimeout(r, 5000));
+
+          try {
+            await video.requestPictureInPicture();
+          } catch (err) {
+            console.error(err);
+          }
+        });
+      }, 100);
+    });
+  </script>
+
+</body>
+</html>
