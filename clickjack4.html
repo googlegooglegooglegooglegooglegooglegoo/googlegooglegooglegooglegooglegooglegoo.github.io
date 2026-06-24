@@ -1,0 +1,36 @@
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;     
+    height: 10vh;
+    margin: 0;
+  }
+
+  .input {
+    margin-top: 10px;
+  }
+</style>
+
+<button onclick="spoof()">Test</button>
+
+<input class="input" id="myInput" autocomplete="cc-number">
+
+<p>Output: <span id="output"></span></p>
+
+<script>
+function spoof() {
+    setTimeout(() => {
+        alert("Halooo.....");
+    }, 100);
+
+    // Focus Input
+    document.getElementById("myInput").focus();
+}
+
+// Live output
+document.getElementById("myInput").addEventListener("input", function () {
+    document.getElementById("output").textContent = this.value;
+});
+</script>
