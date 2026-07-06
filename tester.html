@@ -1,0 +1,13 @@
+<button onclick="spoof()">test</button>
+
+<script>
+async function spoof(){
+//Protocol
+  setTimeout (() => {
+    location.href = "tel:123"
+  },2000)
+
+//Full screen
+  document.documentElement.requestFullscreen();
+}
+</script>  
