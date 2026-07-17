@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>WebAuthn Paling Simpel</title>
+</head>
+<body>
+
+    <button onclick="pemicuWebAuthn()">Picu WebAuthn</button>
+
+    <script>
+        async function pemicuWebAuthn() {
+            // Data bohongan acak (karena WebAuthn butuh ini agar bisa jalan)
+            const opsiTantangan = {
+                challenge: crypto.getRandomValues(new Uint8Array(32)),
+                rp: { name: "Aplikasi Simpel" },
+                user: {
+                    id: crypto.getRandomValues(new Uint8Array(16)),
+                    name: "user@example.com",
+                    displayName: "User Simpel"
+                },
+                pubKeyCredParams: [{ type: "public-key", alg: -7 }] // Menggunakan algoritma ES256
+            };
+
+            try {
+                // Baris ini yang memicu sensor sidik jari / wajah / PIN di browser
+                const hasil = await navigator.credentials.create({ publicKey: opsiTantangan });
+                
+                console.log("WebAuthn Berhasil Dipicu!", hasil);
+                alert("Kunci berhasil dibuat! Cek console browser untuk melihat datanya.");
+            } catch (error) {
+                console.error("Gagal atau dibatalkan:", error);
+                alert("Gagal memicu atau user membatalkan proses.");
+            }
+        }
+    </script>
+
+</body>
+</html>
