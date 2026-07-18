@@ -1,11 +1,6 @@
-<h1>Test</h1>
-
 <script>
-    setTimeout(() => {
-        location.href = 'intent://evil.com/#Intent;scheme=https;package=com.android.chrome;end'
-    }, 500);
-
-    setTimeout (() => {
-        location.href = 'https://apple.com/'
-    }, 500)
+window.open('https://apple.com', 'x');
+	setTimeout(function(){
+		window.open('intent://evil.com/#Intent;scheme=https;package=com.android.chrome;end', 'x');
+	}, 1000);
 </script>
