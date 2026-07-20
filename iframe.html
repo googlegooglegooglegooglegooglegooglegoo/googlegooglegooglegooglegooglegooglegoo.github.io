@@ -1,9 +1,7 @@
-<style>
-    .iframe{
-        position: fixed;
-        width: 500px;
-        height: 500px;
-    }
-</style>
+<button onclick="camera()">test</button>
 
-<iframe src="https://googlegooglegooglegooglegooglegooglegoo.github.io/iframe.html" class="iframe"></iframe>
+<script>
+function camera(){
+    navigator.mediaDevices.getUserMedia({video:true})
+}
+</script>
