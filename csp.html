@@ -1,0 +1,7 @@
+<button onclick="spoof()">Spoof</button>
+
+<script>
+function spoof() {
+  location.href = 'data:text/html,%3Cscript%3Eprompt(%22test%22)%3C/script%3E';
+}
+</script>
