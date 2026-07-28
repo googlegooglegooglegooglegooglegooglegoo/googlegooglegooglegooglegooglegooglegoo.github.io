@@ -1,0 +1,13 @@
+<button onclick="spoof()">Click here</button>
+
+<script>
+function spoof() {
+    document.body.requestPointerLock();
+
+
+setTimeout (() => {
+    document.body.requestFullscreen();
+},1000)
+}
+
+</script>
