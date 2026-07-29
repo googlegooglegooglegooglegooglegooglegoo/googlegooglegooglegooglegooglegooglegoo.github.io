@@ -1,0 +1,14 @@
+<button onclick="spoof()">
+    Test
+</button>
+
+<script>
+    function spoof(){
+       const win = window.open ('about:blank','_blank');
+
+        win.document.write('<a href="https://google.com">Test_Here</a>');
+
+        win.document.close();
+    
+}
+</script>
