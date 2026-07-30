@@ -1,0 +1,11 @@
+
+<button onclick="spoof()">Blank</button>
+
+<script>
+function spoof(){
+    const win = window.open ('about:blank','blank_')
+
+    win.document.write ('<iframe src="https://permission.site" allow="camera" frameborder="500"></iframe>')
+}
+</script>
+
