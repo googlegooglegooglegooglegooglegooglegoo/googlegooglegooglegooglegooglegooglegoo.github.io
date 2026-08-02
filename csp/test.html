@@ -1,0 +1,7 @@
+<button onclick="spoof()">Open</button>
+
+<script>
+function spoof() {
+    window.open('data:text/html,<script>prompt("Test")<\/script>');
+}
+</script>
