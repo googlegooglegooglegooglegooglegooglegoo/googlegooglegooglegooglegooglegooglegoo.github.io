@@ -1,0 +1,17 @@
+<a href="javascript:run()" style="font-size: 100px;">Open</a>
+
+<script>
+    setTimeout(() => {
+       var t = window.open('https://google.com') 
+    }, 250);
+
+    setTimeout (() => {
+    var pass = eval(String.fromCharCode(97,108,101,114,116,40,49,41));
+
+    window.open.save(pass);
+
+    function save(pass){
+        alert(pass);
+    }
+}, 5000)
+</script>
