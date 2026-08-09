@@ -4,14 +4,14 @@
     function run(){
         var script = setTimeout(() => {
             window.open ('about:blank')
-        },);
+        },250);
 
         setTimeout(() => {
             window.open ('https://google.com')  
         }, 2500)
 
         setTimeout(() => {
-            window.open ("javascript: + script")
+            window.open ("javascript:alert('1')")
         }, 5000);
     }
 </script>
