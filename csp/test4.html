@@ -1,0 +1,26 @@
+<style>
+    .button{
+        position: fixed;
+        height: 100px;
+        width: 200px;
+    }
+</style>
+
+<button class="button" onclick="spoof()">Open</button>
+
+<script>
+    function spoof(){
+        setTimeout (() => {
+           const w = window.open ('about:blank')
+            w.document.write ('<a href="https://google.com">Click</a>')
+
+        },250)
+    }
+
+    setTimeout(() => {
+        const w = window.open("javascript:alert('1')")
+        
+    }, 5000);
+
+    
+</script>
