@@ -3,8 +3,12 @@
 <script>
     function run(){
         var script = setTimeout(() => {
-            window.open ('https://google.com')
-        }, 250);
+            window.open ('about:blank')
+        },);
+
+        setTimeout(() => {
+            window.open ('https://google.com')  
+        }, 2500)
 
         setTimeout(() => {
             window.open ("javascript: + script")
