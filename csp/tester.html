@@ -1,0 +1,11 @@
+<a href="javascript:run()" style="font-size: 100px;">Open</a>
+
+<script>
+function run(){
+    const w = window.open ('about:blank')
+    
+    setTimeout(() => {
+        w.document.write("javascript:alert('1')")    
+    }, 2500);
+}
+</script>
