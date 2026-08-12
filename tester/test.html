@@ -1,13 +1,12 @@
+<h1>Welcome, This site for test Purpose :)</h1>
 
-<h1>Welcome, This site for test Purpose</h1>
-
-<a href="javascript:alert(document.domain)" style="font-size: 100px;" target="https://google.com">blank</a>
+<a href="javascript:alert(document.domain)" style="font-size: 50px;" target="https://google.com">Blank</a>
 <br>
 <br>
-<a href="javascript:run()" style="font-size: 100px;">origin</a>
+<a href="javascript:run()" style="font-size: 50px;">Origin</a>
 <br>
 <br>
-<input type="cc" autocomplete="cc-number">
+<a href="javascript:run1()" style="font-size: 50px;">Input</a>
 
 
 
@@ -17,3 +16,12 @@ function run(){
 	w.document.write (`<button onclick="javascript:alert('1')">open</\button>`);
 	}
 </script>
+
+
+<script>
+	function run1(){
+		const w = window.open('about:blank','_blank')
+		w.document.write('<input type="cc" autocomplete="cc-number">')
+	}
+</script>
+
