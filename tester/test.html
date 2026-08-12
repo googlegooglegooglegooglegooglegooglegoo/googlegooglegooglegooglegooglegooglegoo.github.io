@@ -1,10 +1,13 @@
 <a href="javascript:alert(document.domain)" style="font-size: 100px;" target="https://google.com">blank</a>
 <br>
+<br>
 <a href="javascript:run()" style="font-size: 100px;">origin</a>
+
+
 
 <script>
 function run(){
 	const w = window.open ('about:blank','_blank')
-	w.document.write ('<script>javascript:alert(1)<\/script>')
+	w.document.write (`<button onclick="javascript:alert('1')">open</\button>`);
 	}
 </script>
