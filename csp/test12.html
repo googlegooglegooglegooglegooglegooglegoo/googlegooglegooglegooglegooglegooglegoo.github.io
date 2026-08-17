@@ -1,14 +1,17 @@
 <button onclick="spoof()">Click</button>
 
 <script>
-    const w = open('about:blank');
+    function spoof(){
+        const w = open('about:blank');
 
-    w.document.write (`
-    <button onclick="setTimeout(() => {javascript:alert('1')}, 4000);" style="font-size: 100px;">alert_trigger</button>
-    <button onclick="location.href='https:/google.com'" style="font-size: 100px">google.com</button>
-    `)
+        w.document.write (`
+        <button onclick="setTimeout(() => {javascript:alert('1')}, 4000);" style="font-size: 100px;">alert_trigger</button>
+        <button onclick="location.href='https:/google.com'" style="font-size: 100px">google.com</button>
+        `)
 
     w.document.close();
+
+    }
 </script>
 
 
