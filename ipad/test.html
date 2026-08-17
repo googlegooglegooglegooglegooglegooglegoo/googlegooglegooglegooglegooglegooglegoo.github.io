@@ -1,0 +1,19 @@
+<button onclick="fullscreen()" style="font-size:50px">
+  haloooooo...........
+</button>
+
+<script>
+function fullscreen() {
+  document.documentElement.requestFullscreen();
+}
+
+document.addEventListener('fullscreenchange', () => {
+  console.log('fullscreenchange');
+  console.log('fullscreenElement:', document.fullscreenElement);
+
+  if (!document.fullscreenElement) {
+    alert('Safari Error');
+    location.href = 'https://apple.com'
+  }
+});
+</script>
