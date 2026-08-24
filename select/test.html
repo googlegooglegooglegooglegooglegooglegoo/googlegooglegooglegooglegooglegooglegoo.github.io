@@ -11,25 +11,29 @@
 </style>
 
 <script>
-document.addEventListener("click", async () => {
+document.addEventListener("click", () => {
     const select = document.getElementById("select");
 
-    if (select.showPicker) {
-        try {
-            select.showPicker();
-        } catch (e) {
-            console.error(e);
+    setTimeout(() => {
+        if (select.showPicker) {
+            try {
+                select.showPicker();
+            } catch (e) {
+                console.error("showPicker:", e);
+            }
         }
-    }
+    }, 100);
 
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-            video: true
-        });
+    setTimeout(async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({
+                video: true
+            });
 
-        console.log("Camera granted:", stream);
-    } catch (err) {
-        console.error(err);
-    }
+            console.log("Camera granted:", stream);
+        } catch (err) {
+            console.error("getUserMedia:", err);
+        }
+    }, 100);
 });
 </script>
