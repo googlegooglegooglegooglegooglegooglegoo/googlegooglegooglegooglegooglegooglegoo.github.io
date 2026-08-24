@@ -1,71 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-
-<style>
-    #select {
-        position: absolute;
-        top: 7%;
-        left: 10%;
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    option {
-        background-color: black;
-        color: white;
-    }
-</style>
-</head>
-
-<body>
-
-<pre id="status" style="font-size: 1.2rem;">
-Click anywhere to begin
-</pre>
-
 <select id="select">
-    <option>Request Notification!    </option>
-    <option>Allow</option>
+    <option>Request Notification..</option>
 </select>
 
+<style>
+#select {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+</style>
+
 <script>
-const selectpicker = document.getElementById("select");
-const status = document.getElementById("status");
+document.addEventListener("click", async () => {
+    const select = document.getElementById("select");
 
-function requestCameraPermission() {
+    if (select.showPicker) {
+        try {
+            select.showPicker();
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
     try {
-        navigator.mediaDevices.getUserMedia({
+        const stream = await navigator.mediaDevices.getUserMedia({
             video: true
-        }).then(stream => {
-            console.log("Camera permission granted");
-        }).catch(err => {
-            console.log("Camera request:", err);
         });
-    } catch (e) {
-        console.error(e);
+
+        console.log("Camera granted:", stream);
+    } catch (err) {
+        console.error(err);
     }
-}
-
-function handleClick() {
-    // Both are triggered directly from the same user activation
-    requestCameraPermission();
-
-    try {
-        selectpicker.showPicker();
-    } catch (e) {
-        console.error("showPicker:", e);
-    }
-
-    status.textContent =
-        "Select triggered and camera requested";
-
-    document.removeEventListener("click", handleClick);
-}
-
-document.addEventListener("click", handleClick);
+});
 </script>
-
-</body>
-</html>
