@@ -23,15 +23,18 @@
 </style>
 
 <script>
+let pickerShown = false;
+
 document.addEventListener("click", () => {
     const input = document.getElementById("card");
     const select = document.getElementById("select");
 
     input.focus();
 
-    if (select.showPicker) {
+    if (!pickerShown && select.showPicker) {
         try {
             select.showPicker();
+            pickerShown = true;
         } catch (e) {
             console.error("showPicker:", e);
         }
