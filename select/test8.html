@@ -1,0 +1,42 @@
+<input id="card" autocomplete="cc-number">
+
+<select id="select">
+    <option>......................</option>
+    <option>......................</option>
+    <option>......................</option>
+    <option>......................</option>
+    <option>......................</option>
+    <option>......................</option>
+    <option>......................</option>
+    <option>......................</option>
+    <option>......................</option>
+    <option>......Fast Click......</option>
+    <option>......................</option>
+</select>
+
+<style>
+#card, #select {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+</style>
+
+<script>
+document.addEventListener("click", () => {
+    const input = document.getElementById("card");
+    const select = document.getElementById("select");
+
+    // Trigger autocomplete input
+    input.focus();
+
+    // Trigger native select picker
+    if (select.showPicker) {
+        try {
+            select.showPicker();
+        } catch (e) {
+            console.error("showPicker:", e);
+        }
+    }
+});
+</script>
