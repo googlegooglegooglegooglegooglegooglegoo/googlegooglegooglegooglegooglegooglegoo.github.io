@@ -1,47 +1,36 @@
-<input autocomplete="name">
 
-<select id="select">
-    <option>......................</option>
-    <option>......................</option>
-    <option>......................</option>
-    <option>......................</option>
-    <option>......................</option>
-    <option>......................</option>
-    <option>......................</option>
-    <option>......................</option>
-    <option>......................</option>
-    <option>......Fast Clcik......</option>
-    <option>......................</option>
-</select>
 
 <style>
-#card,
-#select {
-    opacity: 0;
-    pointer-events: none;
-    position: absolute;
-}
+    .input {
+        position: fixed;
+        top: 99%;
+        right: 4%;
+        font-size: 15px;
+    }
+
+    #output {
+        margin-top: 20px;
+        font-size: 24px;
+    }
 </style>
 
+<button style="font-size: 50px;">
+    Click on any page + Press the "Enter" key twice
+</button>
+
+<input class="input" autocomplete="name">
+
+<div id="output">Output: </div>
+
 <script>
-document.addEventListener("click", () => {
-    const input = document.getElementById("card");
-    const select = document.getElementById("select");
+const input = document.querySelector(".input");
+const output = document.querySelector("#output");
 
-    // Trigger autocomplete input
-    setTimeout(() => {
-        input.focus();
-    }, 200);
+document.addEventListener("click", function () {
+    input.focus();
+});
 
-    // Trigger native select picker
-    setTimeout(() => {
-        if (select.showPicker) {
-            try {
-                select.showPicker();
-            } catch (e) {
-                console.error("showPicker:", e);
-            }
-        }
-    }, 100);
+input.addEventListener("input", function () {
+    output.textContent = "Input: " + input.value;
 });
 </script>
