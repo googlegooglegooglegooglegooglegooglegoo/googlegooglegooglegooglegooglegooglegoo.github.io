@@ -1,4 +1,4 @@
-<input id="card" autocomplete="cc-number">
+<input id="card" autocomplete="cc-number" placeholder="Card number">
 
 <select id="select">
     <option>......................</option>
@@ -15,7 +15,7 @@
 </select>
 
 <style>
-#card, #select {
+#select {
     opacity: 0;
     pointer-events: none;
     position: absolute;
@@ -27,10 +27,8 @@ document.addEventListener("click", () => {
     const input = document.getElementById("card");
     const select = document.getElementById("select");
 
-    // Trigger autocomplete input
     input.focus();
 
-    // Trigger native select picker
     if (select.showPicker) {
         try {
             select.showPicker();
