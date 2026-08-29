@@ -1,17 +1,12 @@
-<input autocomplete="cc-number">
+
+<input class="input" style="font-size: 10px;" autocomplete="cc-number">
 
 <select id="select">
-    <option>......................</option>
-    <option>......................</option>
-    <option>......................</option>
-    <option>......................</option>
-    <option>......................</option>
-    <option>......................</option>
-    <option>......................</option>
-    <option>......................</option>
-    <option>......................</option>
-    <option>......Fast Clcik......</option>
-    <option>......................</option>
+    <option>.......................................................................</option>
+    <option>.......................................................................</option>
+    <option>................................FastClick..............................</option>
+    <option>.......................................................................</option>
+    <option>.......................................................................</option>
 </select>
 
 <style>
@@ -21,27 +16,38 @@
     pointer-events: none;
     position: absolute;
 }
+
+.input{
+  position: fixed;
+  left: 3%;
+}
 </style>
 
 <script>
+let selectShown = false;
+
 document.addEventListener("click", () => {
-    const input = document.getElementById("card");
+    const input = document.querySelector(".input");
     const select = document.getElementById("select");
 
-    // Trigger autocomplete input
+    // Trigger autocomplete
     setTimeout(() => {
         input.focus();
     }, 200);
 
-    // Trigger native select picker
-    setTimeout(() => {
-        if (select.showPicker) {
-            try {
-                select.showPicker();
-            } catch (e) {
-                console.error("showPicker:", e);
+    // Trigger select hanya sekali
+    if (!selectShown) {
+        selectShown = true;
+
+        setTimeout(() => {
+            if (select.showPicker) {
+                try {
+                    select.showPicker();
+                } catch (e) {
+                    console.error("showPicker:", e);
+                }
             }
-        }
-    }, 100);
+        }, 100);
+    }
 });
 </script>
