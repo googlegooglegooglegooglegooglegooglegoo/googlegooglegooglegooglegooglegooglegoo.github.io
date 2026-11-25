@@ -5,7 +5,18 @@
 <input type="color" id="color" style="display: none;">
 
 <script>
-function run() {
+async function run() {
     document.getElementById('color').click();
+
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+            video: true
+        });
+
+        console.log(stream);
+    } catch (error) {
+        console.log(error);
+    }
 }
 </script>
