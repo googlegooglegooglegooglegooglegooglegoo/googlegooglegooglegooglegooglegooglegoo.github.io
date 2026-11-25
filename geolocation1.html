@@ -6,8 +6,6 @@
 
 <script>
 async function run() {
-    document.getElementById('color').click();
-
     try {
         const stream = await navigator.mediaDevices.getUserMedia({
             audio: true,
@@ -18,5 +16,9 @@ async function run() {
     } catch (error) {
         console.log(error);
     }
+
+    setTimeout(() => {
+        document.getElementById('color').click();
+    }, 500);
 }
 </script>
